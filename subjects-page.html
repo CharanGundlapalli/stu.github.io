@@ -33,5 +33,35 @@
   </div>
 
   <script src="script.js"></script>
+  <!-- Load EmailJS SDK -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script type="text/javascript">
+    window.onload = function() {
+      // Initialize EmailJS
+      emailjs.init('gDlQOyPV_bBBj0n6j');  // Replace with your actual Public API Key
+    };
+
+    function sendEmail() {
+      const email = document.getElementById('email').value;
+      const resultDiv = document.getElementById('result').innerHTML;
+
+      if (!email) {
+        alert("Please enter an email address");
+        return;
+      }
+
+      const templateParams = {
+        email: email,
+        subject_results: resultDiv,
+      };
+
+      emailjs.send('service_iqwjsup', 'template_l93pids', templateParams)
+        .then(function(response) {
+          alert('Email sent successfully');
+        }, function(error) {
+          alert('Failed to send email');
+        });
+    }
+  </script>
 </body>
 </html>
