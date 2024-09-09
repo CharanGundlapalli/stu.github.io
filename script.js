@@ -123,17 +123,24 @@ function sendEmail() {
     return;
   }
 
+  // Ensure the results section exists
+  const resultDiv = document.getElementById('result');
+  if (!resultDiv) {
+    alert("Please calculate your grades first");
+    return;
+  }
+
   // Retrieve results from the DOM directly
-  const total_S = document.querySelector('#result p:nth-of-type(1)').innerText.split(": ")[1] || '0';
-  const total_A = document.querySelector('#result p:nth-of-type(2)').innerText.split(": ")[1] || '0';
-  const total_B = document.querySelector('#result p:nth-of-type(3)').innerText.split(": ")[1] || '0';
-  const total_C = document.querySelector('#result p:nth-of-type(4)').innerText.split(": ")[1] || '0';
-  const total_D = document.querySelector('#result p:nth-of-type(5)').innerText.split(": ")[1] || '0';
-  const total_E = document.querySelector('#result p:nth-of-type(6)').innerText.split(": ")[1] || '0';
-  const total_F = document.querySelector('#result p:nth-of-type(7)').innerText.split(": ")[1] || '0';
-  const pending_Courses = document.querySelector('#result p:nth-of-type(8)').innerText.split(": ")[1] || '0';
-  const cgpa = document.querySelector('#result p:nth-of-type(9)').innerText.split(": ")[1] || '0.00';
-  const remaining_Courses = document.querySelector('#result p:nth-of-type(11)').innerHTML || '';
+  const total_S = resultDiv.querySelector('p:nth-of-type(1)')?.innerText.split(": ")[1] || '0';
+  const total_A = resultDiv.querySelector('p:nth-of-type(2)')?.innerText.split(": ")[1] || '0';
+  const total_B = resultDiv.querySelector('p:nth-of-type(3)')?.innerText.split(": ")[1] || '0';
+  const total_C = resultDiv.querySelector('p:nth-of-type(4)')?.innerText.split(": ")[1] || '0';
+  const total_D = resultDiv.querySelector('p:nth-of-type(5)')?.innerText.split(": ")[1] || '0';
+  const total_E = resultDiv.querySelector('p:nth-of-type(6)')?.innerText.split(": ")[1] || '0';
+  const total_F = resultDiv.querySelector('p:nth-of-type(7)')?.innerText.split(": ")[1] || '0';
+  const pending_Courses = resultDiv.querySelector('p:nth-of-type(8)')?.innerText.split(": ")[1] || '0';
+  const cgpa = resultDiv.querySelector('p:nth-of-type(9)')?.innerText.split(": ")[1] || '0.00';
+  const remaining_Courses = resultDiv.querySelector('p:nth-of-type(11)')?.innerHTML || '';
 
   const templateParams = {
     user_email: email,
@@ -157,7 +164,6 @@ function sendEmail() {
       console.error('Error:', error);
     });
 }
-
 
 function createCircles() {
   const numCircles = 30; // Adjust the number of circles
