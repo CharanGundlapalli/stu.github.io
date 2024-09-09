@@ -154,7 +154,7 @@ function sendEmail() {
     remaining_Courses: remaining_Courses
   };
 
-  emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+  emailjs.send('service_iqwjsup', 'template_l93pids', templateParams)
     .then(function(response) {
       alert('Email sent successfully');
     }, function(error) {
