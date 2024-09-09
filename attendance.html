@@ -173,9 +173,9 @@
             if (email && attendanceReport) {
                 // Prepare data for EmailJS
                 const templateParams = {
-                    to_email: email,
-                    from_name: 'Charan',
-                    message: attendanceReport,
+                    to_email: email,  // Dynamically setting the recipient email
+                    from_name: 'Charan',  // Your name or sender's name
+                    message: attendanceReport,  // The generated attendance report
                     reply_to: email
                 };
 
