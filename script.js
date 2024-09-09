@@ -127,7 +127,7 @@ function sendEmail() {
   const resultDiv = document.getElementById('result');
   const resultText = resultDiv.innerText; // Get text content for simplicity
 
-  // Extract values from resultText (This is an example and might need adjustments)
+  // Extract values from resultText
   const resultLines = resultText.split('\n');
   const total_S = resultLines[1] || '';
   const total_A = resultLines[2] || '';
@@ -138,7 +138,7 @@ function sendEmail() {
   const total_F = resultLines[7] || '';
   const pending_Courses = resultLines[8] || '';
   const cgpa = resultLines[9] || '';
-  const remaining_Courses = resultLines.slice(11).join('<br>') || ''; // Assuming remaining courses start after line 11
+  const remaining_Courses = resultLines.slice(11).join('<br>') || '';
 
   const templateParams = {
     user_email: email,
@@ -146,7 +146,7 @@ function sendEmail() {
     total_A: total_A,
     total_B: total_B,
     total_C: total_C,
-        total_D: total_D,
+    total_D: total_D,
     total_E: total_E,
     total_F: total_F,
     pending_Courses: pending_Courses,
