@@ -117,16 +117,41 @@ function calculateSubjects() {
 
 function sendEmail() {
   const email = document.getElementById('email').value;
-  const resultDiv = document.getElementById('result').innerHTML;
 
   if (!email) {
     alert("Please enter an email address");
     return;
   }
 
+  // Retrieve results from the resultDiv
+  const resultDiv = document.getElementById('result');
+  const resultText = resultDiv.innerText; // Get text content for simplicity
+
+  // Extract values from resultText (This is an example and might need adjustments)
+  const resultLines = resultText.split('\n');
+  const total_S = resultLines[1] || '';
+  const total_A = resultLines[2] || '';
+  const total_B = resultLines[3] || '';
+  const total_C = resultLines[4] || '';
+  const total_D = resultLines[5] || '';
+  const total_E = resultLines[6] || '';
+  const total_F = resultLines[7] || '';
+  const pending_Courses = resultLines[8] || '';
+  const cgpa = resultLines[9] || '';
+  const remaining_Courses = resultLines.slice(11).join('<br>') || ''; // Assuming remaining courses start after line 11
+
   const templateParams = {
-    email: email,
-    subject_results: resultDiv,
+    user_email: email,
+    total_S: total_S,
+    total_A: total_A,
+    total_B: total_B,
+    total_C: total_C,
+        total_D: total_D,
+    total_E: total_E,
+    total_F: total_F,
+    pending_Courses: pending_Courses,
+    cgpa: cgpa,
+    remaining_Courses: remaining_Courses
   };
 
   emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
@@ -134,6 +159,7 @@ function sendEmail() {
       alert('Email sent successfully');
     }, function(error) {
       alert('Failed to send email');
+      console.error('Error:', error);
     });
 }
 
