@@ -123,22 +123,17 @@ function sendEmail() {
     return;
   }
 
-  // Retrieve results from the resultDiv
-  const resultDiv = document.getElementById('result');
-  const resultText = resultDiv.innerText; // Get text content for simplicity
-
-  // Extract values from resultText
-  const resultLines = resultText.split('\n');
-  const total_S = resultLines[1] || '';
-  const total_A = resultLines[2] || '';
-  const total_B = resultLines[3] || '';
-  const total_C = resultLines[4] || '';
-  const total_D = resultLines[5] || '';
-  const total_E = resultLines[6] || '';
-  const total_F = resultLines[7] || '';
-  const pending_Courses = resultLines[8] || '';
-  const cgpa = resultLines[9] || '';
-  const remaining_Courses = resultLines.slice(11).join('<br>') || '';
+  // Retrieve results from the DOM directly
+  const total_S = document.querySelector('#result p:nth-of-type(1)').innerText.split(": ")[1] || '0';
+  const total_A = document.querySelector('#result p:nth-of-type(2)').innerText.split(": ")[1] || '0';
+  const total_B = document.querySelector('#result p:nth-of-type(3)').innerText.split(": ")[1] || '0';
+  const total_C = document.querySelector('#result p:nth-of-type(4)').innerText.split(": ")[1] || '0';
+  const total_D = document.querySelector('#result p:nth-of-type(5)').innerText.split(": ")[1] || '0';
+  const total_E = document.querySelector('#result p:nth-of-type(6)').innerText.split(": ")[1] || '0';
+  const total_F = document.querySelector('#result p:nth-of-type(7)').innerText.split(": ")[1] || '0';
+  const pending_Courses = document.querySelector('#result p:nth-of-type(8)').innerText.split(": ")[1] || '0';
+  const cgpa = document.querySelector('#result p:nth-of-type(9)').innerText.split(": ")[1] || '0.00';
+  const remaining_Courses = document.querySelector('#result p:nth-of-type(11)').innerHTML || '';
 
   const templateParams = {
     user_email: email,
@@ -162,6 +157,7 @@ function sendEmail() {
       console.error('Error:', error);
     });
 }
+
 
 function createCircles() {
   const numCircles = 30; // Adjust the number of circles
